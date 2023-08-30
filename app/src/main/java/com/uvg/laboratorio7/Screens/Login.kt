@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -28,17 +29,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.uvg.laboratorio7.R
 import com.uvg.laboratorio7.ui.theme.Laboratorio7Theme
 
 @Composable
 fun LoginScreen(){
-    BodyContent()
+    LoginBodyContent()
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyContent(){
+fun LoginBodyContent(){
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     Column(
@@ -61,8 +63,8 @@ fun BodyContent(){
         TextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text("Usuario") },
-            placeholder = { Text("Nombre de usuario")},
+            label = { Text(stringResource(R.string.usuario_Label)) },
+            placeholder = { Text(stringResource(R.string.nombre_de_usuario))},
             singleLine = true
         )
         Spacer(
@@ -72,8 +74,8 @@ fun BodyContent(){
         TextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Contraseña") },
-            placeholder = { Text("Contraseña")},
+            label = { Text(stringResource(R.string.contrase_a_label)) },
+            placeholder = { Text(stringResource(R.string.contrase_a))},
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
@@ -87,15 +89,7 @@ fun BodyContent(){
             modifier = Modifier
                 .width(200.dp),
         ) {
-            Text("Login")
+            Text(stringResource(R.string.login_titel))
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Laboratorio7Theme {
-       LoginScreen()
     }
 }
