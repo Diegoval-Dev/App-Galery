@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -52,13 +53,20 @@ fun LoginBodyContent(){
         Text(
             text = "Login",
             textAlign = TextAlign.Center,
-            fontSize = 20.sp,
+            fontSize = 30.sp,
             fontWeight = FontWeight.Black
         )
-
         Spacer(
             modifier = Modifier
-                .height(36.dp)
+                .height(18.dp)
+        )
+        Divider(
+            modifier = Modifier
+                .width(200.dp)
+        )
+        Spacer(
+            modifier = Modifier
+                .height(18.dp)
         )
         TextField(
             value = username,
