@@ -30,18 +30,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.uvg.laboratorio7.Navigation.AppScreens
 import com.uvg.laboratorio7.R
 import com.uvg.laboratorio7.ui.theme.Laboratorio7Theme
 
 @Composable
-fun LoginScreen(){
-    LoginBodyContent()
+fun LoginScreen(onLoginSuccess: () -> Unit){
+    LoginBodyContent(onLoginSuccess = onLoginSuccess)
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginBodyContent(){
+fun LoginBodyContent(onLoginSuccess: () -> Unit){
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     Column(
@@ -93,11 +95,24 @@ fun LoginBodyContent(){
                 .height(36.dp)
         )
         Button(
-            onClick = { /* Do something! */ },
+            onClick = {
+                if (isValidCredentials(username, password)) {
+                    onLoginSuccess()
+                }
+                      },
             modifier = Modifier
                 .width(200.dp),
         ) {
             Text(stringResource(R.string.login_titel))
         }
     }
+}
+
+
+
+fun isValidCredentials(username: String, password: String): Boolean {
+    val localUsername = "admin"
+    val localPassword = "admin"
+
+    return username == localUsername && password == localPassword
 }

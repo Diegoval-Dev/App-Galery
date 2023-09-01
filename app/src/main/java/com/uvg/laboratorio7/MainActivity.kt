@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.uvg.laboratorio7.Navigation.AppNavigation
 import com.uvg.laboratorio7.Screens.GaleryScreen
 import com.uvg.laboratorio7.Screens.LoginScreen
 import com.uvg.laboratorio7.ui.theme.Laboratorio7Theme
@@ -25,8 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.White
                 ) {
-                    //LoginScreen()
-                    GaleryScreen()
+                    AppNavigation()
                 }
             }
         }
@@ -45,6 +45,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     Laboratorio7Theme {
-        Greeting("Android")
+        AppNavigation()
     }
 }

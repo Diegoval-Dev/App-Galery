@@ -39,15 +39,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.uvg.laboratorio7.R
 
 @Composable
-fun GaleryScreen(){
-    GaleryBodyContent(idImage = R.drawable.spiralbetty_1667763462561)
+fun GaleryScreen(navController: NavController){
+    GaleryBodyContent(idImage = R.drawable.spiralbetty_1667763462561, navController = navController)
 }
 
 @Composable
-fun GaleryBodyContent(@DrawableRes idImage: Int){
+fun GaleryBodyContent(@DrawableRes idImage: Int, navController: NavController){
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
@@ -66,6 +67,9 @@ fun GaleryBodyContent(@DrawableRes idImage: Int){
             ){
                 Button(onClick = { /*TODO*/ }) {
                     Text("Anterior")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text("Logout")
                 }
                 Button(onClick = { /*TODO*/ }) {
                     Text("Siguiente")
