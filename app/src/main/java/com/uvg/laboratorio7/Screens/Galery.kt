@@ -1,39 +1,28 @@
 package com.uvg.laboratorio7.Screens
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -41,14 +30,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.uvg.laboratorio7.R
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import com.uvg.laboratorio7.Model.ArtImage
 
 @Composable
-fun GaleryScreen(navController: NavController){
-    GaleryBodyContent(idImage = R.drawable.spiralbetty_1667763462561, navController = navController)
+fun GaleryScreen(navController: NavController, onLogout: () -> Unit){
+    GaleryBodyContent(navController = navController, onLogout = onLogout)
 }
 
 @Composable
-fun GaleryBodyContent(@DrawableRes idImage: Int, navController: NavController){
+fun GaleryBodyContent( navController: NavController, onLogout: () -> Unit){
+    var numberArt by remember { mutableStateOf( 0) }
+
+    val mutableListOfPersons = mutableListOf(ArtImage("Diru","Ruth","(2022)", R.drawable.spiralbetty_1667763462561) ,
+        ArtImage("Burgues Cat 1", "Diego", "(2021)" , R.drawable.dall_e_2023_04_03_19_56_08___una_foto_realista_de_un_gato_burgu_s_vestido_de_traje_con_un_monoculo_bebiendo_vino)
+    )
+
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize(),
@@ -68,7 +67,11 @@ fun GaleryBodyContent(@DrawableRes idImage: Int, navController: NavController){
                 Button(onClick = { /*TODO*/ }) {
                     Text("Anterior")
                 }
-                Button(onClick = { /*TODO*/ }) {
+                Button(
+                    onClick = {
+                        onLogout()
+                    }
+                ) {
                     Text("Logout")
                 }
                 Button(onClick = { /*TODO*/ }) {
