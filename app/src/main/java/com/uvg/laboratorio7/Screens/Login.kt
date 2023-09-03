@@ -78,24 +78,25 @@ fun LoginBodyContent(onLoginSuccess: () -> Unit){
         )
         TextField(
             value = username,
-            onValueChange = { username = it },
+            onValueChange = { if (it.length <= 10) username = it },
             label = { Text(stringResource(R.string.usuario_Label)) },
             placeholder = { Text(stringResource(R.string.nombre_de_usuario))},
             singleLine = true
         )
         Spacer(
             modifier = Modifier
-            .height(36.dp)
+                .height(36.dp)
         )
         TextField(
             value = password,
-            onValueChange = { password = it },
+            onValueChange = { if (it.length <= 8) password = it },
             label = { Text(stringResource(R.string.contrase_a_label)) },
             placeholder = { Text(stringResource(R.string.contrase_a))},
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
+
         Spacer(
             modifier = Modifier
                 .height(36.dp)
