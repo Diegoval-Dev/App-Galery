@@ -35,8 +35,8 @@ import androidx.compose.runtime.setValue
 import com.uvg.laboratorio7.Model.ArtImage
 
 @Composable
-fun GaleryScreen(navController: NavController, onLogout: () -> Unit){
-    GaleryBodyContent(navController = navController, onLogout = onLogout)
+fun GaleryScreen(onLogout: () -> Unit){
+    GaleryBodyContent(onLogout = onLogout)
 }
 
 val mutableListOfPersons = mutableListOf(ArtImage("Diru","Ruth","(2022)", R.drawable.spiralbetty_1667763462561),
@@ -48,7 +48,7 @@ val mutableListOfPersons = mutableListOf(ArtImage("Diru","Ruth","(2022)", R.draw
 )
 
 @Composable
-fun GaleryBodyContent( navController: NavController, onLogout: () -> Unit){
+fun GaleryBodyContent(onLogout: () -> Unit){
     var numberArt by remember { mutableStateOf( 0) }
     LazyColumn(
         modifier = Modifier
@@ -137,7 +137,7 @@ fun GaleryImage(@DrawableRes id: Int, title: String, author: String, year: Strin
                 verticalArrangement = Arrangement.Center
             ){
                 Text(
-                    text = "TITULO",
+                    text = title,
                     fontSize = 22.sp,
                     fontWeight = FontWeight(200)
                 )
@@ -146,13 +146,13 @@ fun GaleryImage(@DrawableRes id: Int, title: String, author: String, year: Strin
                         .fillMaxWidth()
                 ) {
                     Text(
-                        text = "Autor",
+                        text = author,
                         fontSize = 15.sp,
                         fontWeight = FontWeight(800),
                     )
                     Spacer(modifier = Modifier.width(5.dp))
                     Text(
-                        text = "ANIO",
+                        text = year,
                         fontSize = 15.sp,
                         fontWeight = FontWeight(300)
                     )
@@ -160,5 +160,4 @@ fun GaleryImage(@DrawableRes id: Int, title: String, author: String, year: Strin
             }
         }
     }
-
 }

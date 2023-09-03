@@ -20,7 +20,7 @@ fun AppNavigation() {
     NavHost(navController, startDestination = AppScreens.Login.route) {
         composable("Login_Screen") {
             if (isLoggedIn.value) {
-                GaleryScreen(navController = navController, onLogout = {
+                GaleryScreen(onLogout = {
                     isLoggedIn.value = false
                     navController.navigate(AppScreens.Login.route)
                 })
@@ -32,7 +32,7 @@ fun AppNavigation() {
             }
         }
         composable("Galery") {
-            GaleryScreen(navController = navController, onLogout = {
+            GaleryScreen(onLogout = {
                 isLoggedIn.value = false
                 closingSession.value = true
                 navController.navigate(AppScreens.Login.route)
